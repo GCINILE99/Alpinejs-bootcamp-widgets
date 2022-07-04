@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="total_phonebills.js"></script>
     <script src="transport_Fee.js"></script>
     <script src="enough_airtime.js"></script>
     <script src="greet.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     
 
-  
+
      <style>
 
       .message{
@@ -32,17 +33,28 @@
       }
         
       .container{
-        display: flex;
-        background-color: #FFCAB1 ;
-        border: 5px solid  #FFCAB1;
-        padding: 1em;
-        margin: 1em;
-        margin-left: 0.5em;
-        border-radius: 1em;
-        flex: 1;  
+        display: flex; 
+         /* background-color: palevioletred ;  */
+        /* border: 5px solid  #FFCAB1; */
+        /* padding: 1em; */
+        /* margin: 1em; */
+        /* margin-left: 0.5em; */
+        /* border-radius: 1em; */
+        /* flex: 1; .  */
     
       } .cont{
         flex: 1;
+      }.input{
+        background-color: #FFCAB1;
+        border: 5px solid #FFCAB1;
+        padding: 1em;
+        margin: 1em;
+        margin-left: 0.5em;
+        border-radius: 1em; 
+        flex: 1; 
+        
+        
+  
       }
      
       </style>
@@ -69,10 +81,11 @@
  Hellow.........
 </div >
 
-
+<div class="input">
 <label for="id">Please enter your name</label>
 <input type="text" x-model="name" id="name" placeholder="e.g John">
 <button x-on:click="greetMe">Greet</button>
+</div>
 </div>
 
 <div class="cont" x-data="{
@@ -81,51 +94,56 @@
     airtimeMessage : '',
     calculate(){
        this.airtimeMessage = enoughAirtime(this.airtimeUsage, this.availableAmount)
+       setTimeout(() => {
+        this.displayMessage = ''; }, 4000)
+        
     }
 }">
-<div class="input">
+
     <h1 class="topic">Enough Airtime Widget</h1>
+  
+ 
 
- <label for="usage">Please enter your airtime Usage :</label>
- <input type="text" x-model="airtimeUsage"  id="usage" placeholder="e.g call,SMS">  
-
-</div>
 <div class="input">
+  <label for="usage">Please enter your airtime Usage :</label>
+  <input type="text" x-model="airtimeUsage"  id="usage" placeholder="e.g call,SMS">  
+ 
+
     <label for="amount">Amount Available</label>
 <input type="text" x-model="availableAmount"  id="amount" placeholder="e.g 123">
-</div>
 
-<div class="message"  x-show="message.length > 0" x-text="airtimeMessage">
+
+<div class="message"  x-show="airtimeMessage.length > 0" x-text="airtimeMessage">
    
+ 
 
 </div>
 <div>
     <button x-on:click="calculate">Calculate airtime usage</button>
 </div>
-
 </div>
-  
+</div>
 
-<div class="Reg" x-data="{
-       shift: '',
+<div x-data="{
+       shift: ' ',
+       amountEntered:'0.00',
        displayMessage : '',
-       
        displayFee() {
+        
        this.displayMessage = transportFee(this.shift)
-        this.shift = displayMessage;
-    }
+       }
       
-
-
-}">
+       
+      }">
 
 <h1 class="topic">Transport Fee Widget</h1>
  
 <div class="input">
-<label for="number "> Please enter Shift</label>
-<input type="text" x-model="shift" id="number" placeholder="e.g day,night">  
+<label for="user"> Please enter Shift</label>
+<input type="text" x-model="shift" id="user" placeholder="e.g"> 
 
-<div class="message"  x-show="displayMessage.length > 0" x-text="DisplayMessage"></div>
+
+<div class="message"  x-show="displayMessage.length >0" x-text="displayMessage"></div>
 <div>
     <button x-on:click="displayFee">click</button>
 </div>
@@ -136,7 +154,34 @@
 
 </div>
 
+<div class="phone" x-data="{
+   airtimeUsage  : '',
+   totalMessage : '',
+   Amount :'0.00',
+   phoneBill(){
+    this.totalMessage = totalPhoneBill(this.airtimeUsage)
+   }
+   
+ }">
+<h1>Total Phone Bill Widget</h1>
+<div class="input">
+
+ <label for="usage">Please enter your airtime Usage :</label>
+ <input type="text" x-model="airtimeUsage"  id="usage" placeholder="e.g call,sms" > 
+   
+ <div class="message" x-show="totalMessage > 0"  x-text="totalMessage"></div>
+
+   
+ <div><button x-on:click="phoneBill">click</button></div>
+ 
 </div>
+
+
+
+
+</div>
+</div>
+
 
 </body>
 

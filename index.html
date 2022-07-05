@@ -33,14 +33,14 @@
       }
         
       .container{
-        display: flex; 
+        /* display: flex;  */
          /* background-color: palevioletred ;  */
         /* border: 5px solid  #FFCAB1; */
         /* padding: 1em; */
         /* margin: 1em; */
         /* margin-left: 0.5em; */
         /* border-radius: 1em; */
-        /* flex: 1; .  */
+         flex: 1; 
     
       } .cont{
         flex: 1;
@@ -52,10 +52,17 @@
         margin-left: 0.5em;
         border-radius: 1em; 
         flex: 1; 
-        
-        
-  
+     }.container2{
+        /* display: flex; */
+        flex: 1;
+      
+     }
+     @media (min-width:720px){
+      .big_container{
+        display: flex;
+        background-color:olivedrab ;
       }
+     }
      
       </style>
 
@@ -63,6 +70,7 @@
 </head>
 
 <body>
+  <div class="big_container">
     <div class="container">
 
 
@@ -128,7 +136,9 @@
 </div>
 </div>
 </div>
-
+</div>
+<div class="container2">
+ 
 
 <div x-data="{
   shift : '',
@@ -188,8 +198,10 @@
 
 </div>
 
+</div>
 
 </div>
+
 </body>
 
 </html>

@@ -82,7 +82,10 @@
           this.message = greet(this.name)
           setTimeout(() => {
             this.message = ''; }, 4000)
-
+            setTimeout(() => {
+              this.name = '';
+          }, 4000)
+          
         }
          
     }">
@@ -109,7 +112,14 @@
        this.airtimeMessage = enoughAirtime(this.airtimeUsage, this.availableAmount)
        setTimeout(() => {
         this.airtimeMessage = ''; }, 4000)
-        
+        setTimeout(() => {
+          this.airtimeUsage= '';
+      }, 4000)
+      setTimeout(() => {
+        this.availableAmount = '';
+    }, 4000)
+    
+      
     }
 }">
 
@@ -149,6 +159,10 @@
       setTimeout (() => {
           this.shiftMessage = '';
       }, 4000)
+      setTimeout(() => {
+        this.shift = '';
+    }, 4000)
+    
   }
 }">
 
@@ -177,6 +191,10 @@
       setTimeout(() => {
           this.billMessage = '';
       }, 4000)
+      setTimeout(() => {
+        this.tarrif = '';
+    }, 4000)
+    
   }
 }">
 
